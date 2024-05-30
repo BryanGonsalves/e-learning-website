@@ -9,7 +9,9 @@ routes = Blueprint('routes', __name__)
 
 @routes.route('/')
 def home():
-    return "Welcome to First Flask Project!"
+    courses = Course.query.all()
+    return render_template("course_view.html", course=courses)
+
 @routes.route('/loaddata')
 def loaddata(): 
     data = Course.query.all()
